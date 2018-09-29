@@ -1,19 +1,35 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const passport = require('passport');
+const cookieSession = require('cookie-session');
+const keys = require('./keys');
 
-var app = express();
+const authSetup = require('./config/auth-setup');
+const indexRoutes = require('./routes/index');
+const authRoutes = require('./routes/auth-routes');
+
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
+}));
 
-app.use('/', indexRouter);
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// set up routes
+app.use('/', indexRoutes);
+app.use('/auth', authRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

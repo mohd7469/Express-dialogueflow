@@ -7,8 +7,9 @@ const { WebhookClient } = require('dialogflow-fulfillment');
 
 
 const authCheck = function(req, res, next) {
+  console.info('at authCheck');
   if(!req.user) {
-    res.redirect()
+    res.redirect('/auth/facebook')
   }
 };
 
@@ -18,10 +19,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/dialogflowExpressFulfilment', authCheck, function(req, res, next) {
+  console.info('at dialogflowExpressFulfilment');
   WebhookProcessing(req, res);
 });
-
-router.get('/login/facebook', passport.authenticate('facebook'));
 
 function WebhookProcessing(request, response) {
   const agent = new WebhookClient({ request, response });

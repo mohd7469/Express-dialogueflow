@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
-const keys = require('./keys');
+const keys = require('./config/keys');
 
 const passportSetup = require('./config/passport-setup');
 const indexRoutes = require('./routes/index');

@@ -5,7 +5,6 @@ const passport = require('passport');
 
 const { WebhookClient } = require('dialogflow-fulfillment');
 
-
 const authCheck = function(req, res, next) {
   console.info('at authCheck');
   if(!req.user) {

@@ -8,7 +8,7 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 const keys = require('./keys');
 
-const authSetup = require('./config/auth-setup');
+const passportSetup = require('./config/passport-setup');
 const indexRoutes = require('./routes/index');
 const authRoutes = require('./routes/auth-routes');
 

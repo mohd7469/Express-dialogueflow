@@ -14,8 +14,11 @@ router.get('/facebook', passport.authenticate('facebook', {
   scope: ['profile']
 }));
 
-router.get('facebook/redirect', passport.authenticate('facebook'), function(req, res, next) {
+// callback route for facebook for redirect to
+router.get('/facebook/redirect', passport.authenticate('facebook'), function(req, res, next) {
+  console.info('at /facebook/redirect');
+  console.info(req.user);
   res.redirect('/dialogflowExpressFulfilment');
 });
 
-module .exports = router;
+module.exports = router;

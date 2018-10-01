@@ -17,7 +17,8 @@ passport.use(
   new FacebookStrategy({
       clientID: keys.facebook.clientID,
       clientSecret: keys.facebook.clientSecret,
-      callbackURL: "auth/facebook/redirect"
+      callbackURL: "auth/facebook/redirect",
+      scope: ['email']
     },
     function(accessToken, refreshToken, profile, cb) {
       console.info('at passport-setup');

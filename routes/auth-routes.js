@@ -4,10 +4,12 @@ const router = express.Router();
 const passport = require('passport');
 
 router.get('/login', function(req, res, next) {
+  console.info('at /login');
   res.send('login here');
 });
 
 router.get('/logout', function(req, res, next) {
+  console.info('at /logout');
   res.send('logging out..');
 });
 

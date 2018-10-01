@@ -21,6 +21,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/dialogflowExpressFulfilment', authCheck, function(req, res, next) {
   console.info('at dialogflowExpressFulfilment');
+  res.redirect('/auth/facebook');
+  console.info('redirecting to /auth/facebook');
   WebhookProcessing(req, res);
 });
 

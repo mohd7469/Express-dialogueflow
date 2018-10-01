@@ -19,7 +19,7 @@ router.get('/facebook', passport.authenticate('facebook'));
 router.get('/facebook/redirect', passport.authenticate('facebook'), function(req, res, next) {
   print('at /facebook/redirect');
   console.info(req.user);
-  res.redirect('/dialogflowExpressFulfilment');
+  res.redirect('/dialogflowExpressFulfilment/');
 });
 
 function print(msg) {

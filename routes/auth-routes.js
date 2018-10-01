@@ -14,7 +14,7 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.get('/facebook', passport.authenticate('facebook', {
-  scope: ['public_profile']
+  scope: ['email']
 }));
 
 // callback route for facebook for redirect to

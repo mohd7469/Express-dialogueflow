@@ -26,6 +26,7 @@ router.post('/dialogflowExpressFulfilment', authCheck, function(req, res, next) 
 
 function WebhookProcessing(request, response) {
   const agent = new WebhookClient({ request, response });
+  console.info('incoming....');
 
   function getNotification(agent) {
     agent.add(`login init good ${request.user}`);

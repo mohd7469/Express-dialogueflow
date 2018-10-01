@@ -15,8 +15,8 @@ passport.deserializeUser(function(obj, cb) {
 
 passport.use(
   new FacebookStrategy({
-      clientID: key.facebook.clientID,
-      clientSecret: key.facebook.clientSecret,
+      clientID: keys.facebook.clientID,
+      clientSecret: keys.facebook.clientSecret,
       callbackURL: "auth/facebook/redirect"
     },
     function(accessToken, refreshToken, profile, cb) {

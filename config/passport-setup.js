@@ -4,12 +4,12 @@ const FacebookStrategy = require('passport-facebook');
 const keys = require('./keys');
 
 passport.serializeUser(function(user, cb) {
-  console.info('at serializeUser');
+  print('at serializeUser');
   cb(null, user);
 });
 
 passport.deserializeUser(function(obj, cb) {
-  console.info('at deserializeUser');
+  print('at deserializeUser');
   cb(null, obj);
 });
 
@@ -21,12 +21,17 @@ passport.use(
       scope: ['email']
     },
     function(accessToken, refreshToken, profile, cb) {
-      console.info('at passport-setup');
-      console.info('accessToken ', accessToken);
-      console.info('refreshToken ', refreshToken);
-      console.info('profile ', profile);
-      console.info('cb ', cb);
+      print('at passport-setup');
+      print('accessToken ', accessToken);
+      print('refreshToken ', refreshToken);
+      print('profile ', profile);
+      print('cb ', cb);
       cb(null, profile);
     }
   )
 );
+
+function print(msg) {
+  console.info(`**************************************************************************`);
+  console.info(msg);
+}

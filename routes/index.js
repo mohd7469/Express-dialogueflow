@@ -6,12 +6,12 @@ const passport = require('passport');
 const { WebhookClient } = require('dialogflow-fulfillment');
 
 const authCheck = function(req, res, next) {
-  console.info('at authCheck');
+  print('at authCheck');
   if(!req.user) {
-    console.info('unauthorized');
+    print('unauthorized');
     res.redirect('/auth/facebook')
   } else {
-    console.info('authorized');
+    print('authorized');
   }
 };
 
@@ -20,15 +20,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/dialogflowExpressFulfilment', authCheck, function(req, res, next) {
-  console.info('at dialogflowExpressFulfilment');
+  print('at dialogflowExpressFulfilment');
   res.redirect('/auth/facebook');
-  console.info('redirecting to /auth/facebook');
+  print('redirecting to /auth/facebook');
   WebhookProcessing(req, res);
 });
 
 function WebhookProcessing(request, response) {
   const agent = new WebhookClient({ request, response });
-  console.info('incoming....');
+  print('incoming....');
 
   function getNotification(agent) {
     agent.add(`login init good ${request.user}`);
@@ -39,4 +39,8 @@ function WebhookProcessing(request, response) {
   agent.handleRequest(intentMap);
 }
 
+function print(msg) {
+  console.info(`**************************************************************************`);
+  console.info(msg);
+}
 module.exports = router;

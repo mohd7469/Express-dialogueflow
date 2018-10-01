@@ -9,10 +9,12 @@ const { WebhookClient } = require('dialogflow-fulfillment');
 const authCheck = function(req, res, next) {
   console.info('at authCheck');
   if(!req.user) {
+    console.info('unauthorized');
     res.redirect('/auth/facebook')
+  } else {
+    console.info('authorized');
   }
 };
-
 
 router.get('/', function(req, res, next) {
   res.send('Hello from express /');

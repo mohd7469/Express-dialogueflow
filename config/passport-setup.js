@@ -23,7 +23,7 @@ passport.use(
     function(accessToken, refreshToken, profile, cb) {
       console.info('at passport-setup');
       console.info('accessToken ', accessToken);
-      console.info('refreshToken ', refreshTokenprofile);
+      console.info('refreshToken ', refreshToken);
       console.info('profile ', profile);
       console.info('cb ', cb);
       cb(null, profile);
